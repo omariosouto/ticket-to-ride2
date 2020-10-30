@@ -16,7 +16,7 @@ export default function Home(props: HomeProps) {
   return (
     <div>
       <ul>
-        {['omariosouto'].map((post, idx) => {
+        {['omariosouto', 'peas'].map((post, idx) => {
           const title = `${baseUrl}/api/thumbnail.png?title=${post}&thumbnail_bg=%23121214`;
           return (
           <li key={idx}>
@@ -28,14 +28,4 @@ export default function Home(props: HomeProps) {
       </ul>
     </div>
   )
-}
-
-export async function getStaticProps() {
-  const allPosts = await getAllPosts()
-
-  return {
-    props: {
-      posts: allPosts,
-    }
-  }
 }
