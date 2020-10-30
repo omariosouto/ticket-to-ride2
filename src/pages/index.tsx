@@ -15,7 +15,6 @@ const baseUrl = process.env.NODE_ENV === 'development'
 export default function Home(props: HomeProps) {
   return (
     <div>
-      <h1>Blog do Diego</h1>
       <ul>
         {['omariosouto'].map((post, idx) => {
           const title = `${baseUrl}/api/thumbnail.png?title=${post}&thumbnail_bg=%23121214`;
