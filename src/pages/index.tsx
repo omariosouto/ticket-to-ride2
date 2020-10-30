@@ -10,7 +10,7 @@ interface HomeProps {
 
 const baseUrl = process.env.NODE_ENV === 'development'
 ? 'http://localhost:3000'
-: 'https://ticket-to-ride2.vercel.app/';
+: 'https://ticket-to-ride2.vercel.app';
 
 export default function Home(props: HomeProps) {
   return (
