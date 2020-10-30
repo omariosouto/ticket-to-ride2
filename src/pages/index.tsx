@@ -8,18 +8,24 @@ interface HomeProps {
   }>
 }
 
+const baseUrl = process.env.NODE_ENV === 'development'
+? 'http://localhost:3000'
+: 'https://ticket-to-ride2.vercel.app/';
+
 export default function Home(props: HomeProps) {
   return (
     <div>
       <h1>Blog do Diego</h1>
       <ul>
-        {props.posts.map((post, idx) => (
+        {['omariosouto'].map((post, idx) => {
+          const title = `${baseUrl}/api/thumbnail.png?title=${post}&thumbnail_bg=%23121214`;
+          return (
           <li key={idx}>
-            <Link href={post.slug}>
-              <a>{post.title}</a>
+            <Link href={title}>
+              <img src={title} />
             </Link>
           </li>
-        ))}
+        )})}
       </ul>
     </div>
   )
