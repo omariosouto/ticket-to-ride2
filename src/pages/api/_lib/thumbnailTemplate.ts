@@ -21,7 +21,7 @@ export function getHtml({
         margin: 0;
         font-family: Roboto, sans-serif;
         color: #FFF;
-        background: #1688fa;
+        background: var(--background);
         /*
         background-image: 
           radial-gradient(circle at 25px 25px, rgba(255, 255, 255, 0.2) 2%, transparent 0%), 
@@ -52,13 +52,58 @@ export function getHtml({
   
         max-width: 80%;
       }
+
+
+      /* New */
+      :root {
+        --size: 1;
+        --background: #181818;
+        --color1: #1b2b43;
+        --color2: #a3ffbf;
+      } 
+
+      .ticket-visual_visual {
+          width: 650px;
+          height: 320px;
+          margin: 100px auto;
+          position: relative;
+          transition: all 300ms cubic-bezier(0.03, 0.98, 0.53, 0.99) 0s;
+          background: linear-gradient( to right, var(--color1), var(--color2) );
+          border-radius: 20px;
+          padding: 5px;
+      }
+
+      .ticket-visual-wrapper {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        background: var(--background);
+        border-radius: 15px;
+      }
+
+      .ticket-profile_image {
+        width: calc(82px * var(--size));
+        height: calc(82px * var(--size));
+        border-radius: 50%;
+      }
+
+      .ticket-profile_name {
+        font-size: calc(32px * var(--size));
+        margin: 10px 0 5px 20px;
+        font-weight: 700;
+      }
     </style>
   </head>
   <body>
     <div id="wrapper">
-      <h1>${title}</h1>
+      
+      <div class="ticket-visual_visual" id="ticket">
+        <div class="ticket-visual-wrapper">
+          <img class="ticket-profile_image" src=${`https://unavatar.now.sh/github/${title}`} />
+          <h1 class="ticket-profile_name">${title}</h1>
+        </div>
+      </div>
 
-      <img src=${`https://unavatar.now.sh/github/${title}`} />
     </div>
   </body>
   </html>`
