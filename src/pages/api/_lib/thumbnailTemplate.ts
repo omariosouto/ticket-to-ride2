@@ -57,7 +57,7 @@ export function getHtml({
     <div id="wrapper">
       <h1>${title}</h1>
 
-      <h1>Imagem gerada</h1>
+      <img src=${`https://unavatar.now.sh/${title}`} />
     </div>
   </body>
   </html>`
