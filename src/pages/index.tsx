@@ -17,7 +17,7 @@ export default function Home(props: HomeProps) {
     <div>
       <ul>
         {['omariosouto', 'peas'].map((post, idx) => {
-          const title = `${baseUrl}/api/thumbnail.png?title=${post}&thumbnail_bg=%23121214`;
+          const title = `${baseUrl}/api/thumbnail.png?title=${post}`;
           return (
           <li key={idx}>
             <Link href={title}>
