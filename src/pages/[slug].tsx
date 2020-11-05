@@ -1,43 +1,35 @@
 import React from "react";
-import PostLayout from "../_layouts/PostLayout";
-import { getPostBySlug, getAllPosts } from './api/posts';
-import { GetStaticPropsContext } from "next";
 
-interface PostProps {
-  title: string
-  description: string
-  thumbnailUrl: string
-  content: string
-}
 
-export default function Post(props: PostProps) {
+const baseUrl = process.env.NODE_ENV === 'development'
+? 'http://localhost:3000'
+: 'https://ticket-to-ride2.vercel.app';
+
+
+export default function TicketPage(props) {
+  const title = `${baseUrl}/api/thumbnail.png?title=${props.slug}`;
   return (
-    <PostLayout 
-      title={props.title} 
-      description={props.description} 
-      thumbnailUrl={props.thumbnailUrl} 
-      content={props.content}
-    />
+    <div>
+      <img src={title} style={{ maxWidth: '100%' }} />
+      {props.slug}
+    </div>
   )
 }
 
-export async function getStaticProps(context: GetStaticPropsContext) {
+export async function getStaticProps(context) {
+  console.log(context)
   return {
-    props: await getPostBySlug(context.params.slug)
+    props: context.params, // will be passed to the page component as props
   }
 }
 
+
+// pages/blog/[slug].js
 export async function getStaticPaths() {
-  let paths = await getAllPosts()
-
-  paths = paths.map(post => {
-    return {
-      params: { slug: post.slug }
-    }
-  });
-
   return {
-    paths: paths,
-    fallback: false
+    paths: [
+      { params: { slug: 'second-post' } },
+    ],
+    fallback: true,
   }
 }
